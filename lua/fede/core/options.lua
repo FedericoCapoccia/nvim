@@ -1,7 +1,7 @@
 local options = {
 	backup = false,
 	clipboard = "unnamedplus",
-	cmdheight = 0,
+	cmdheight = 1,
 	conceallevel = 0,
 	hlsearch = true,
 	ignorecase = false,
@@ -23,11 +23,11 @@ local options = {
 	wrap = false,
 	scrolloff = 8,
 	sidescrolloff = 8,
-    termguicolors = true,
+	termguicolors = true,
 }
 
 for option, value in pairs(options) do
-	vim.opt[option] = value 
+	vim.opt[option] = value
 end
 
 -- Providers --
@@ -35,6 +35,5 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
-
-vim.opt.shortmess:append "c"
-vim.cmd [[set iskeyword+=-]]
+vim.opt.shortmess:append("c")
+vim.cmd([[set iskeyword+=-]])
