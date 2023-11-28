@@ -21,6 +21,9 @@ keymap("n", "<leader>sv", ":vsplit<CR>", opts)
 keymap("n", "<leader>sh", ":split<CR>", opts)
 keymap("n", "<leader>sx", ":<C-w>q<CR>", opts)
 
+-- Spawn terminal
+keymap("n", "<leader>h", ":split<CR>:term<CR>:set nornu<CR>:set nu!<CR>i", opts)
+
 -- Auto Indent All
 keymap("n", "<leader>i", "gg=G", opts)
 
