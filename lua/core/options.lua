@@ -18,12 +18,13 @@ local options = {
 	undofile = true,
 	updatetime = 300,
 	expandtab = true,
-	shiftwidth = 4,
-	tabstop = 4,
+	shiftwidth = 2,
+	tabstop = 2,
 	wrap = false,
 	scrolloff = 8,
 	sidescrolloff = 8,
 	termguicolors = true,
+  laststatus = 3,
 }
 
 for option, value in pairs(options) do
