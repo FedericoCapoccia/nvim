@@ -1,12 +1,20 @@
+-------------------------------------------
+---  ____  _             _           
+--- |  _ \| |_   _  __ _(_)_ __  ___ 
+--- | |_) | | | | |/ _` | | '_ \/ __|
+--- |  __/| | |_| | (_| | | | | \__ \
+--- |_|   |_|\__,_|\__, |_|_| |_|___/
+---                |___/             
+--- By EzBl4ck
+-------------------------------------------
+
+local mapper = require "plugins.configs.mappings"
 local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    opts = function()
-      return require "plugins.configs.nvimtree"
-    end,
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
+    config = function()
+      require("plugins.configs.nvimtree").setup()
     end,
   },
 
@@ -24,25 +32,24 @@ local plugins = {
 
   {
     "famiu/bufdelete.nvim",
-    dependencies = { "akinsho/bufferline.nvim" },
+    init = function()
+      mapper.map_bufdelete()
+    end,
   },
 
   {
     "akinsho/bufferline.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "*",
-    opts = function()
-      return require "plugins.configs.bufferline"
-    end,
-    config = function(_, opts)
-      require("bufferline").setup(opts)
+    config = function()
+      require("plugins.configs.bufferline").setup()
     end,
   },
 
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function(_, opts)
+    config = function()
       require("lualine").setup()
     end,
   },
@@ -51,11 +58,8 @@ local plugins = {
     "windwp/nvim-autopairs",
     dependencies = { "hrsh7th/nvim-cmp" },
     event = "InsertEnter",
-    opts = function()
-      return require "plugins.configs.autopairs"
-    end,
-    config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
+    config = function()
+      require("plugins.configs.autopairs").setup()
     end,
   },
 
@@ -70,11 +74,8 @@ local plugins = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
     },
-    opts = function()
-      return require "plugins.configs.nvim-cmp"
-    end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
+    config = function()
+      require("plugins.configs.nvim-cmp").setup()
     end,
 
   },
@@ -86,11 +87,8 @@ local plugins = {
     dependencies = {
       "windwp/nvim-ts-autotag",
     },
-    opts = function()
-      return require "plugins.configs.treesitter"
-    end,
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+    config = function()
+      require("plugins.configs.treesitter").setup()
     end,
   },
 
@@ -103,11 +101,38 @@ local plugins = {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-    opts = function()
-      return {}
-    end,
-    config = function(_, opts)
+    config = function()
       require("dressing").setup()
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("plugins.configs.telescope").setup()
+    end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("plugins.configs.toggleterm").setup()
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    priority = 999,
+    config = function()
+      require("plugins.configs.which-key").setup()
     end,
   },
 }

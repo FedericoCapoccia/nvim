@@ -1,41 +1,57 @@
-local options = {
+----------------------------------------------------
+---  _____              ____  _ _   _            
+--- |_   _| __ ___  ___/ ___|(_) |_| |_ ___ _ __ 
+---   | || '__/ _ \/ _ \___ \| | __| __/ _ \ '__|
+---   | || | |  __/  __/___) | | |_| ||  __/ |   
+---   |_||_|  \___|\___|____/|_|\__|\__\___|_|   
+---
+---  By EzBl4ck
+----------------------------------------------------
 
-  highlight = {
-    enable = true,
-  },
+local M = {}
 
-  indent = { enable = true },
-  
-  autotag = {
-    enable = true,
-  },
+function M.setup()
 
-  ensure_installed = {
-    "lua",
-    "vim",
-    "gitignore",
-    "c",
-    "cpp",
-    "rust",
-    "toml",
-    "json",
-    "xml",
-  },
-
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<C-space>",
-      node_incremental = "<C-space>",
-      scope_incremental = false,
-      node_decremental = "<bs>",
+  local opts = {
+    highlight = {
+      enable = true,
     },
-  },
 
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
-}
+    indent = { enable = true },
 
-return options
+    autotag = {
+      enable = true,
+    },
+
+    ensure_installed = {
+      "lua",
+      "vim",
+      "gitignore",
+      "c",
+      "cpp",
+      "rust",
+      "toml",
+      "json",
+      "xml",
+    },
+
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "<C-space>",
+        node_incremental = "<C-space>",
+        scope_incremental = false,
+        node_decremental = "<bs>",
+      },
+    },
+
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    },
+  }
+
+  require("nvim-treesitter.configs").setup(opts)
+end
+
+return M
