@@ -1,16 +1,31 @@
 local M = {}
 
 function M.setup()
-
   -- Lsp-Zero
   local lsp_zero = require("lsp-zero").preset({})
 
   lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({buffer = bufnr})
+    lsp_zero.default_keymaps({ buffer = bufnr })
+
+    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+      vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+    end, { buffer = bufnr, desc = "Format file" })
   end)
 
   lsp_zero.setup_servers({
     exclude = { "rust_analyzer" }
+  })
+
+  lsp_zero.format_on_save({
+    format_opts = {
+      async = false,
+      timeout_ms = 10000,
+    },
+    servers = {
+      ["lua_ls"] = { "lua" },
+      ["rust_analyzer"] = { "rust" },
+      ["clangd"] = { "c", "cpp" },
+    }
   })
 
   lsp_zero.setup()
@@ -20,7 +35,7 @@ function M.setup()
   rust_tools.setup({
     server = {
       on_attach = function(_, bufnr)
-        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, {buffer = bufnr})
+        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
       end
     }
   })
@@ -31,7 +46,7 @@ function M.setup()
 
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
-      ['<CR>'] = cmp.mapping.confirm({select = true}),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-f>'] = cmp_action.luasnip_jump_forward(),
       ['<C-b>'] = cmp_action.luasnip_jump_backward(),
