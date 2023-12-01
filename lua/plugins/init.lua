@@ -1,7 +1,7 @@
 -------------------------------------------
 ---  ____  _             _           
 --- |  _ \| |_   _  __ _(_)_ __  ___ 
---- | |_) | | | | |/ _` | | '_ \/ __|
+--- | |_) | | | | |/ _` | | "_ \/ __|
 --- |  __/| | |_| | (_| | | | | \__ \
 --- |_|   |_|\__,_|\__, |_|_| |_|___/
 ---                |___/             
@@ -118,6 +118,25 @@ local plugins = {
       require("plugins.configs.which-key").setup()
     end,
   },
+
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/nvim-cmp",
+      "L3MON4D3/LuaSnip",
+      "simrat39/rust-tools.nvim"
+    },
+    config = function()
+      require("plugins.configs.lsp").setup()
+    end,
+  }
 }
 
 return plugins
