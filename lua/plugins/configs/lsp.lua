@@ -57,6 +57,11 @@ function M.setup()
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "path" },
+    }),
   })
 
   -- Mason
