@@ -47,12 +47,15 @@ function M.setup()
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+      ["<Tab>"] = cmp.mapping.select_next_item(),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-f>'] = cmp_action.luasnip_jump_forward(),
       ['<C-b>'] = cmp_action.luasnip_jump_backward(),
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
     }),
+
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
