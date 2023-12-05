@@ -22,7 +22,7 @@ function M.setup()
       timeout_ms = 10000,
     },
     servers = {
-      ["lua_ls"] = { "lua" },
+      ["null-ls"] = { "javascript", "typescript" },
       ["rust_analyzer"] = { "rust" },
       ["clangd"] = { "c", "cpp" },
     }
@@ -37,6 +37,18 @@ function M.setup()
       on_attach = function(_, bufnr)
         vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
       end
+    }
+  })
+
+  local null_ls = require("null-ls")
+  local null_opts = lsp_zero.build_options("null-ls", {})
+
+  null_ls.setup({
+    on_attach = function(client, bufnr)
+      null_opts.on_attach(client, bufnr)
+    end,
+    sources = {
+      null_ls.builtins.formatting.prettierd,
     }
   })
 
@@ -83,6 +95,15 @@ function M.setup()
       lsp_zero.default_setup,
     },
   })
+
+  require("mason-null-ls").setup({
+    ensure_installed = {
+      "prettierd",
+    },
+    automatic_installation = true,
+    automatic_setup = false,
+  })
+
 end
 
 return M

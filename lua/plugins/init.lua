@@ -132,7 +132,9 @@ local plugins = {
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-path",
       "L3MON4D3/LuaSnip",
-      "simrat39/rust-tools.nvim"
+      "simrat39/rust-tools.nvim",
+      "nvimtools/none-ls.nvim",
+      "jay-babu/mason-null-ls.nvim",
     },
     config = function()
       require("plugins.configs.lsp").setup()
