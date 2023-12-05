@@ -75,6 +75,7 @@ function M.setup()
       "clangd",
       "rust_analyzer",
       "lua_ls",
+      "tsserver",
     },
     automatic_installation = true,
 
