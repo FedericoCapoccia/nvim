@@ -73,6 +73,13 @@ function M.setup()
       documentation = cmp.config.window.bordered(),
     },
 
+    formatting = {
+      format = function (entry, vim_item)
+        vim_item.menu = nil
+        return vim_item
+      end
+    },
+
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "path" },
