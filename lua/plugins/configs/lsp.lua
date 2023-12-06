@@ -52,6 +52,14 @@ function M.setup()
     }
   })
 
+  require("crates").setup({
+    src = {
+      cmp = {
+        enabled = true,
+      },
+    },
+  })
+
   -- Nvim cmp
   local cmp = require('cmp')
   local cmp_action = require('lsp-zero').cmp_action()
@@ -83,6 +91,7 @@ function M.setup()
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "path" },
+      { name = "crates" },
     }),
   })
 

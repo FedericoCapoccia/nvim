@@ -135,6 +135,7 @@ local plugins = {
       "simrat39/rust-tools.nvim",
       "nvimtools/none-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
+      "saecki/crates.nvim",
     },
     config = function()
       require("plugins.configs.lsp").setup()
