@@ -13,7 +13,7 @@ local M = {}
 function M.setup()
 
   local opts =  {
-    size = 15,
+    size = 50,
     shade_filetypes = {},
     shade_terminals = true,
     shading_factor = 1,
