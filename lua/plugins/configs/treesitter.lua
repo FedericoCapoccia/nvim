@@ -33,6 +33,10 @@ function M.setup()
       "toml",
       "json",
       "xml",
+      "html",
+      "javascript",
+      "typescript",
+      "css",
     },
 
     incremental_selection = {

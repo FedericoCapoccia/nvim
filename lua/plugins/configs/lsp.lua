@@ -25,6 +25,7 @@ function M.setup()
       ["null-ls"] = { "javascript", "typescript" },
       ["rust_analyzer"] = { "rust" },
       ["clangd"] = { "c", "cpp" },
+      ["html"] = { "html" },
     }
   })
 
@@ -104,6 +105,7 @@ function M.setup()
       "rust_analyzer",
       "lua_ls",
       "tsserver",
+      "html",
     },
     automatic_installation = true,
 
