@@ -28,11 +28,11 @@ function M.map_telescope()
   map.set("n", "<leader>fr", builtin.oldfiles, { noremap = true, silent = true, desc = "Fuzzy find recent files" })
   map.set("n", "<leader>fs", builtin.live_grep, { noremap = true, silent = true, desc = "Find string in cwd" })
   map.set("n", "<leader>fc", builtin.grep_string, { noremap = true, silent = true, desc = "Find string under cursor in cwd" })
-  map.set("n", "<leader>th", builtin.colorscheme, { noremap = true, silent = true, desc = "List colorschemes" })
 end
 
 function M.map_toggleterm()
-  map.set("n", "<leader>h",  "<cmd>ToggleTerm <CR>", { noremap = true, silent = true, desc = "Open Horizontal Terminal" })
+  map.set("n", "<leader>hh", "<cmd>ToggleTerm direction=horizontal size=35<CR>", { noremap = true, silent = true, desc = "Open Horizontal Terminal" })
+  map.set("n", "<leader>hf", "<cmd>ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "Open Floating Terminal" })
 end
 
 return M

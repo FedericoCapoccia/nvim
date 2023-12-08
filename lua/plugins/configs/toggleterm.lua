@@ -13,13 +13,12 @@ local M = {}
 function M.setup()
 
   local opts =  {
-    size = 50,
+--    size = 50,
     shade_filetypes = {},
     shade_terminals = true,
     shading_factor = 1,
     start_in_insert = true,
     persist_size = true,
-    direction = "horizontal",
   }
 
   require("toggleterm").setup(opts)
