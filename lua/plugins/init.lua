@@ -103,6 +103,17 @@ local plugins = {
   },
 
   {
+    "stevearc/stickybuf.nvim",
+    dependencies = {
+      "akinsho/toggleterm.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    config = function ()
+      require("stickybuf").setup()
+    end
+  },
+
+  {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
