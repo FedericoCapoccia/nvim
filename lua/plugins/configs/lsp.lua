@@ -22,10 +22,9 @@ function M.setup()
       timeout_ms = 10000,
     },
     servers = {
-      ["null-ls"] = { "javascript", "typescript" },
+      ["null-ls"] = { "javascript", "typescript", "html" },
       ["rust_analyzer"] = { "rust" },
       ["clangd"] = { "c", "cpp" },
-      ["html"] = { "html" },
     }
   })
 
