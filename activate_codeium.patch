@@ -1,0 +1,20 @@
+diff --git a/lua/plugins/init.lua b/lua/plugins/init.lua
+index 7d10693..7bb9597 100644
+--- a/lua/plugins/init.lua
++++ b/lua/plugins/init.lua
+@@ -131,12 +131,12 @@ local plugins = {
+   },
+ 
+   {
+-    "github/copilot.vim"
++    "github/copilot.vim",
++    enabled=false
+   },
+ 
+   {
+-    "Exafunction/codeium.vim",
+-    enabled=false
++    "Exafunction/codeium.vim"
+   },
+ 
+   {
