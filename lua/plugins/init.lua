@@ -135,7 +135,8 @@ local plugins = {
   },
 
   {
-    "Exafunction/codeium.vim"
+    "Exafunction/codeium.vim",
+    enabled=false
   },
 
   {
