@@ -135,6 +135,10 @@ local plugins = {
   },
 
   {
+    "Exafunction/codeium.vim"
+  },
+
+  {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
     dependencies = {
