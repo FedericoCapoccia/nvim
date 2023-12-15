@@ -83,6 +83,7 @@ function M.setup()
     
     require("plugins.configs.mappings").map_nvimtree()   
     require("nvim-tree").setup(opts)
+    require("nvim-tree.api").tree.open()
 end
 
 return M

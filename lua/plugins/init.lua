@@ -160,7 +160,7 @@ local plugins = {
     config = function()
       require("plugins.configs.lsp").setup()
     end,
-  }
+  },
 }
 
 return plugins
