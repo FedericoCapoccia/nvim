@@ -108,7 +108,7 @@ local plugins = {
       "akinsho/toggleterm.nvim",
       "nvim-tree/nvim-tree.lua",
     },
-    config = function ()
+    config = function()
       require("stickybuf").setup()
     end
   },
@@ -136,7 +136,13 @@ local plugins = {
 
   {
     "Exafunction/codeium.vim",
-    enabled=false
+    enabled = false
+  },
+
+  {
+    "barrett-ruth/live-server.nvim",
+    build = "yarn global add live-server",
+    config = true
   },
 
   {
