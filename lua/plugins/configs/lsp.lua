@@ -22,10 +22,22 @@ function M.setup()
       timeout_ms = 10000,
     },
     servers = {
-      ["null-ls"] = { "javascript", "typescript", "html", "css", "json", "yaml", "markdown", "scss", "javascriptreact", "typescriptreact" },
+      ["null-ls"] = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "css",
+        "scss",
+        "json",
+        "yaml",
+        "markdown",
+      },
       ["rust_analyzer"] = { "rust" },
       ["clangd"] = { "c", "cpp" },
       ["lua_ls"] = { "lua" },
+      ["lemminx"] = { "xml" },
     }
   })
 
@@ -106,6 +118,7 @@ function M.setup()
       "lua_ls",
       "tsserver",
       "html",
+      "lemminx",
     },
     automatic_installation = true,
 

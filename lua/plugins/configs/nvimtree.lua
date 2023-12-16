@@ -1,6 +1,6 @@
 -------------------------------------------------
----  _   _       _         _____              
---- | \ | |_   _(_)_ __ __|_   _| __ ___  ___ 
+---  _   _       _         _____
+--- | \ | |_   _(_)_ __ __|_   _| __ ___  ___
 --- |  \| \ \ / / | '_ ` _ \| || '__/ _ \/ _ \
 --- | |\  |\ V /| | | | | | | || | |  __/  __/
 --- |_| \_| \_/ |_|_| |_| |_|_||_|  \___|\___|
@@ -11,7 +11,6 @@
 local M = {}
 
 function M.setup()
-
   local opts = {
     view = {
       adaptive_size = false,
@@ -76,14 +75,13 @@ function M.setup()
         },
       },
     }
-  }  
-    -- Disable Netrw
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-    
-    require("plugins.configs.mappings").map_nvimtree()   
-    require("nvim-tree").setup(opts)
-    require("nvim-tree.api").tree.open()
+  }
+  -- Disable Netrw
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  require("plugins.configs.mappings").map_nvimtree()
+  require("nvim-tree").setup(opts)
 end
 
 return M
