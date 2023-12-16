@@ -4,7 +4,7 @@ function M.setup()
   -- Lsp-Zero
   local lsp_zero = require("lsp-zero").preset({})
 
-  lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.on_attach(function(_, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr })
 
     vim.keymap.set({ 'n', 'x' }, 'gq', function()
@@ -25,6 +25,7 @@ function M.setup()
       ["null-ls"] = { "javascript", "typescript", "html" },
       ["rust_analyzer"] = { "rust" },
       ["clangd"] = { "c", "cpp" },
+      ["lua_ls"] = { "lua" },
     }
   })
 
@@ -82,7 +83,7 @@ function M.setup()
     },
 
     formatting = {
-      format = function (entry, vim_item)
+      format = function(_, vim_item)
         vim_item.menu = nil
         return vim_item
       end
@@ -120,7 +121,6 @@ function M.setup()
     automatic_installation = true,
     automatic_setup = false,
   })
-
 end
 
 return M
