@@ -134,6 +134,8 @@ function M.setup()
     automatic_installation = true,
     automatic_setup = false,
   })
+
+  vim.keymap.set('n', '<leader>qf', "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 end
 
 return M
