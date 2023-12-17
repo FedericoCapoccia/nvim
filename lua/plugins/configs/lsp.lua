@@ -38,6 +38,7 @@ function M.setup()
       ["clangd"] = { "c", "cpp" },
       ["lua_ls"] = { "lua" },
       ["lemminx"] = { "xml" },
+      ["cmake"] = { "cmake" },
     }
   })
 
@@ -119,6 +120,7 @@ function M.setup()
       "tsserver",
       "html",
       "lemminx",
+      "cmake",
     },
     automatic_installation = true,
 
