@@ -11,3 +11,13 @@ vim.api.nvim_create_user_command("CMakeBuild",
       return { "Debug", "Release" }
     end,
   })
+
+vim.api.nvim_create_user_command("CppRun",
+  function(opts)
+    require("toggleterm").exec(
+      "clang++ -std=c++20 -Wall -Wextra -pedantic -Weffc++ -Wconversion -Wsign-conversion -Wdouble-promotion " ..
+      opts.fargs[1] .. " && ./a.out && rm a.out");
+  end,
+  {
+    nargs = 1,
+  })
