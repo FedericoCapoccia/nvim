@@ -30,6 +30,8 @@ local plugins = {
     end,
   },
 
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
   {
     "famiu/bufdelete.nvim",
     init = function()
