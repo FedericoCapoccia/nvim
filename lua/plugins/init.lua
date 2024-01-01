@@ -25,6 +25,9 @@ local plugins = {
     config = function()
       require("onedark").setup {
         style = "warmer",
+        lualine = {
+          transparent = true, -- lualine center bar transparency
+        },
       }
       --require("onedark").load()
     end,
