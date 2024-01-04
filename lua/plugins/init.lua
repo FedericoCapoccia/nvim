@@ -24,16 +24,22 @@ local plugins = {
     priority = 1000,
     config = function()
       require("onedark").setup {
-        style = "warmer",
+        style = "darker",
+        transparent = false,
         lualine = {
           transparent = true, -- lualine center bar transparency
         },
       }
       --require("onedark").load()
     end,
+    enabled = true,
   },
 
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+  },
 
   {
     "famiu/bufdelete.nvim",
