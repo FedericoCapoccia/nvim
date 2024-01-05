@@ -23,25 +23,31 @@ function M.setup()
   })
 
   -- Setup LSP
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lspconfig = require("lspconfig")
   lspconfig.clangd.setup {
+    capabilities = capabilities,
     cmd = {
       "clangd",
       "--background-index",
-      -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
-      -- to add more checks, create .clang-tidy file in the root directory
-      -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
       "--clang-tidy",
-      "--completion-style=bundled",
-      "--cross-file-rename",
-      "--header-insertion=iwyu",
     }
   }
-  lspconfig.tsserver.setup {}
-  lspconfig.html.setup {}
-  lspconfig.lua_ls.setup {}
-  lspconfig.lemminx.setup {}
-  lspconfig.cmake.setup {}
+  lspconfig.tsserver.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.html.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.lua_ls.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.lemminx.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.cmake.setup {
+    capabilities = capabilities,
+  }
 
   -- LSP Mason
   require("mason").setup({})
