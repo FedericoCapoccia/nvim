@@ -19,6 +19,13 @@ local plugins = {
   },
 
   {
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("plugins.configs.devicons").setup()
+    end
+  },
+
+  {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
@@ -142,15 +149,6 @@ local plugins = {
   },
 
   {
-    "github/copilot.vim"
-  },
-
-  {
-    "Exafunction/codeium.vim",
-    enabled = false
-  },
-
-  {
     "barrett-ruth/live-server.nvim",
     build = "yarn global add live-server",
     config = function()
@@ -159,21 +157,24 @@ local plugins = {
   },
 
   {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason.nvim",
       "nvim-lua/plenary.nvim",
       "mfussenegger/nvim-dap",
+
+      "nvimtools/none-ls.nvim",
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
-      "hrsh7th/cmp-nvim-lsp",
+      "jay-babu/mason-null-ls.nvim",
+
+      "stevearc/conform.nvim",
+
       "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "L3MON4D3/LuaSnip",
+
       "simrat39/rust-tools.nvim",
-      "nvimtools/none-ls.nvim",
-      "jay-babu/mason-null-ls.nvim",
       "saecki/crates.nvim",
     },
     config = function()

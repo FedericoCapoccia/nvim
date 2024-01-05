@@ -1,91 +1,112 @@
 local M = {}
 
 function M.setup()
-  -- Lsp-Zero
-  local lsp_zero = require("lsp-zero").preset({})
 
-  lsp_zero.on_attach(function(_, bufnr)
-    lsp_zero.default_keymaps({ buffer = bufnr })
+  -- these will be buffer-local keybindings
+  -- because they only work if you have an active language server
+  vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function(event)
+      local opts = {buffer = event.buf}
 
-    vim.keymap.set({ 'n', 'x' }, 'gq', function()
-      vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-    end, { buffer = bufnr, desc = "Format file" })
-  end)
-
-  lsp_zero.setup_servers({
-    exclude = { "rust_analyzer" }
+      vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+      vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+      vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+      vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+      vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+      vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+      vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+      vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+      vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    end
   })
 
-  lsp_zero.format_on_save({
-    format_opts = {
-      async = false,
-      timeout_ms = 10000,
+  -- Setup LSP
+  local lspconfig = require("lspconfig")
+  lspconfig.clangd.setup {
+    cmd = {
+      "clangd",
+      "--background-index",
+      -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
+      -- to add more checks, create .clang-tidy file in the root directory
+      -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
+      "--clang-tidy",
+      "--completion-style=bundled",
+      "--cross-file-rename",
+      "--header-insertion=iwyu",
+    }
+  }
+  lspconfig.tsserver.setup {}
+  lspconfig.html.setup {}
+  lspconfig.lua_ls.setup {}
+  lspconfig.lemminx.setup {}
+  lspconfig.cmake.setup {}
+
+  -- LSP Mason
+  require("mason").setup({})
+  require("mason-lspconfig").setup({
+    ensure_installed = {
+      "clangd",
+      "rust_analyzer",
+      "lua_ls",
+      "tsserver",
+      "html",
+      "lemminx",
+      "cmake",
     },
-    servers = {
-      ["null-ls"] = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "html",
-        "css",
-        "scss",
-        "json",
-        "yaml",
-        "markdown",
-      },
-      ["rust_analyzer"] = { "rust" },
-      ["clangd"] = { "c", "cpp" },
-      ["lua_ls"] = { "lua" },
-      ["lemminx"] = { "xml" },
-      ["cmake"] = { "cmake" },
-    }
+    automatic_installation = true,
+    handlers = {
+      default_setup,
+    },
+  })
+  -- Formatter and Linter Mason
+  require("mason-null-ls").setup({
+    ensure_installed = {
+      "prettierd",
+      "clang-format"
+    },
+    automatic_installation = true,
+    automatic_setup = true,
+    handlers = {}
   })
 
-  lsp_zero.setup()
+  -- Formatting
+  require("conform").setup({
+    formatters_by_ft = {
+      lua = { "lua_ls" },
+      javascript = { "prettierd" },
+      javascriptreact = { { "prettierd", "prettier" } },
+      typescript = { { "prettierd", "prettier" } },
+      typescriptreact = { { "prettierd", "prettier" } },
+      html = { { "prettierd", "prettier" } },
+      css = { { "prettierd", "prettier" } },
+      scss = { { "prettierd", "prettier" } },
+      json = { { "prettierd", "prettier" } },
+      yaml = { { "prettierd", "prettier" } },
+      markdown = { { "prettierd", "prettier" } },
 
-  -- Rust-tools
-  local rust_tools = require('rust-tools')
-  rust_tools.setup({
-    server = {
-      on_attach = function(_, bufnr)
-        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-      end
-    }
+      rust = { "rustfmt" },
+      cpp = { "clang_format" },
+      c = { "clang_format" },
+    },
   })
-
-  local null_ls = require("null-ls")
-  local null_opts = lsp_zero.build_options("null-ls", {})
-
-  null_ls.setup({
-    on_attach = function(client, bufnr)
-      null_opts.on_attach(client, bufnr)
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+      require("conform").format({ bufnr = args.buf })
     end,
-    sources = {
-      null_ls.builtins.formatting.prettierd,
-    }
   })
 
-  require("crates").setup({
-    src = {
-      cmp = {
-        enabled = true,
-      },
-    },
-  })
-
-  -- Nvim cmp
+    -- Nvim cmp
   local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
 
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      --["<S-Tab>"] = cmp.mapping.select_prev_item(),
-      --["<Tab>"] = cmp.mapping.select_next_item(),
+      ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+      ["<Tab>"] = cmp.mapping.select_next_item(),
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-      ['<C-b>'] = cmp_action.luasnip_jump_backward(),
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
     }),
@@ -107,34 +128,43 @@ function M.setup()
       { name = "path" },
       { name = "crates" },
     }),
-  })
 
-  -- Mason
-  require("mason").setup({})
-  require("mason-lspconfig").setup({
-
-    ensure_installed = {
-      "clangd",
-      "rust_analyzer",
-      "lua_ls",
-      "tsserver",
-      "html",
-      "lemminx",
-      "cmake",
-    },
-    automatic_installation = true,
-
-    handlers = {
-      lsp_zero.default_setup,
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
     },
   })
 
-  require("mason-null-ls").setup({
-    ensure_installed = {
-      "prettierd",
+  -- Rust-tools
+  local rust_tools = require('rust-tools')
+  rust_tools.setup({
+    server = {
+      on_attach = function(_, bufnr)
+        vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+      end
+    }
+  })
+
+  
+  --local null_ls = require("null-ls")
+  --local null_opts = lsp_zero.build_options("null-ls", {})
+
+  --null_ls.setup({
+    --on_attach = function(client, bufnr)
+      --null_opts.on_attach(client, bufnr)
+    --end,
+    --sources = {
+      --null_ls.builtins.formatting.prettierd,
+    --}
+  --})
+
+  require("crates").setup({
+    src = {
+      cmp = {
+        enabled = true,
+      },
     },
-    automatic_installation = true,
-    automatic_setup = false,
   })
 
   vim.keymap.set('n', '<leader>qf', "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
