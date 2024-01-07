@@ -8,50 +8,19 @@
 --- By EzBl4ck
 -------------------------------------------
 
-local mapper = require "plugins.configs.mappings"
 local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("plugins.configs.nvimtree").setup()
+      require("fede.plugins.config.nvimtree").setup()
     end,
-  },
-
-  {
-    "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("plugins.configs.devicons").setup()
-    end
-  },
-
-  {
-    "navarasu/onedark.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("onedark").setup {
-        style = "darker",
-        transparent = false,
-        lualine = {
-          transparent = true, -- lualine center bar transparency
-        },
-      }
-      --require("onedark").load()
-    end,
-    enabled = true,
-  },
-
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
   },
 
   {
     "famiu/bufdelete.nvim",
     init = function()
-      mapper.map_bufdelete()
+      vim.keymap.set("n", "<leader>x", "<cmd> Bdelete<CR>", { noremap = true, silent = true, desc = "Delete Buffer" })
     end,
   },
 
@@ -60,7 +29,7 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "*",
     config = function()
-      require("plugins.configs.bufferline").setup()
+      require("fede.plugins.config.bufferline").setup()
     end,
   },
 
@@ -77,7 +46,7 @@ local plugins = {
     dependencies = { "hrsh7th/nvim-cmp" },
     event = "InsertEnter",
     config = function()
-      require("plugins.configs.autopairs").setup()
+      require("fede.plugins.config.autopairs").setup()
     end,
   },
 
@@ -89,7 +58,7 @@ local plugins = {
       "windwp/nvim-ts-autotag",
     },
     config = function()
-      require("plugins.configs.treesitter").setup()
+      require("fede.plugins.config.treesitter").setup()
     end,
   },
 
@@ -116,7 +85,7 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("plugins.configs.telescope").setup()
+      require("fede.plugins.config.telescope").setup()
     end,
   },
 
@@ -135,7 +104,7 @@ local plugins = {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require("plugins.configs.toggleterm").setup()
+      require("fede.plugins.config.toggleterm").setup()
     end,
   },
 
@@ -144,13 +113,13 @@ local plugins = {
     event = "VeryLazy",
     priority = 999,
     config = function()
-      require("plugins.configs.which-key").setup()
+      require("fede.plugins.config.which-key").setup()
     end,
   },
 
   {
     "barrett-ruth/live-server.nvim",
-    build = "yarn global add live-server",
+    build = "npm install -g live-server",
     config = function()
       require("live-server").setup()
     end
@@ -178,9 +147,10 @@ local plugins = {
       "saecki/crates.nvim",
     },
     config = function()
-      require("plugins.configs.lsp").setup()
+      require("fede.plugins.config.lsp").setup()
     end,
   },
+
 }
 
 return plugins

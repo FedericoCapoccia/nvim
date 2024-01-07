@@ -12,7 +12,6 @@ local M = {}
 
 function M.setup()
   local opts = {
-    --    size = 50,
     shade_filetypes = {},
     direction = "float",
     shade_terminals = true,
@@ -22,7 +21,8 @@ function M.setup()
   }
 
   require("toggleterm").setup(opts)
-  require("plugins.configs.mappings").map_toggleterm()
+  vim.keymap.set("n", "<leader>hh", "<cmd>ToggleTerm direction=horizontal size=35<CR>", { noremap = true, silent = true, desc = "Open Horizontal Terminal" })
+  vim.keymap.set("n", "<leader>hf", "<cmd>ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "Open Floating Terminal" }) 
 end
 
 return M

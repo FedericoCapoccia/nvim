@@ -104,7 +104,7 @@ function M.setup()
     end,
   })
 
-    -- Nvim cmp
+  -- Nvim cmp
   local cmp = require('cmp')
 
   cmp.setup({
@@ -151,19 +151,6 @@ function M.setup()
       end
     }
   })
-
-  
-  --local null_ls = require("null-ls")
-  --local null_opts = lsp_zero.build_options("null-ls", {})
-
-  --null_ls.setup({
-    --on_attach = function(client, bufnr)
-      --null_opts.on_attach(client, bufnr)
-    --end,
-    --sources = {
-      --null_ls.builtins.formatting.prettierd,
-    --}
-  --})
 
   require("crates").setup({
     src = {

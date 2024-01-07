@@ -1,2 +1,2 @@
-require "core"
-require "bootstrap"
+require "fede.core"
+require "fede.lazy"

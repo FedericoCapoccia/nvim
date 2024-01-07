@@ -11,7 +11,12 @@
 local M = {}
 
 function M.setup()
-  local opts = {
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+  vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Toggle NvimTree" })
+  vim.keymap.set("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { noremap = true, silent = true, desc = "Focus NvimTree" })
+
+  require("nvim-tree").setup({
     view = {
       adaptive_size = false,
       side = "left",
@@ -74,14 +79,9 @@ function M.setup()
           },
         },
       },
-    }
-  }
-  -- Disable Netrw
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
+    },
+  })
 
-  require("plugins.configs.mappings").map_nvimtree()
-  require("nvim-tree").setup(opts)
 end
 
 return M

@@ -14,6 +14,7 @@ map.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+map.set("n", "<leader>l", "<cmd>noh<CR>", { noremap = true, silent = true, desc = "Clear highlight" })
 map.set("n", "<leader>i", "gg=G<CR>", { noremap = true, silent = true, desc = "Indent file" })
 map.set("n", "<leader>ww", "<cmd> w<CR>", { noremap = true, silent = true, desc = "Save file" })
 map.set("n", "<leader>wa", "<cmd> wa<CR>", { noremap = true, silent = true, desc = "Save all files" })
