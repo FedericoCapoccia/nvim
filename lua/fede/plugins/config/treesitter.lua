@@ -40,6 +40,7 @@ function M.setup()
       "typescript",
       "css",
       "java",
+      "python",
     },
 
     incremental_selection = {
