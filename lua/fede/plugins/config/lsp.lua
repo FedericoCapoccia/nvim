@@ -48,6 +48,7 @@ function M.setup()
   lspconfig.cmake.setup {
     capabilities = capabilities,
   }
+  lspconfig.pyright.setup({})
 
   -- LSP Mason
   require("mason").setup({})
@@ -60,6 +61,7 @@ function M.setup()
       "html",
       "lemminx",
       "cmake",
+      "pyright",
     },
     automatic_installation = true,
     handlers = {
@@ -70,7 +72,8 @@ function M.setup()
   require("mason-null-ls").setup({
     ensure_installed = {
       "prettierd",
-      "clang-format"
+      "clang-format",
+      "black",
     },
     automatic_installation = true,
     automatic_setup = true,
@@ -91,10 +94,10 @@ function M.setup()
       json = { { "prettierd", "prettier" } },
       yaml = { { "prettierd", "prettier" } },
       markdown = { { "prettierd", "prettier" } },
-
       rust = { "rustfmt" },
       cpp = { "clang_format" },
       c = { "clang_format" },
+      python = { "black" },
     },
   })
   vim.api.nvim_create_autocmd("BufWritePre", {
