@@ -9,6 +9,7 @@
 -------------------------------------------
 
 local plugins = {
+  "lambdalisue/suda.vim",
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
