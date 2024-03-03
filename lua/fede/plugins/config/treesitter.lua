@@ -27,6 +27,7 @@ function M.setup()
       "vim",
       "gitignore",
       "c",
+      "c_sharp",
       "cpp",
       "cmake",
       "make",
