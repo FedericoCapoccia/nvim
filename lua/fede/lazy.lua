@@ -16,4 +16,4 @@ require("lazy").setup({
   { import = "fede.plugins.colors" },
 },{})
 
-vim.cmd [[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme onedark]]
