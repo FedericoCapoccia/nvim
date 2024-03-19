@@ -1,20 +1,9 @@
------------------------------------------
----   ___        _   _
----  / _ \ _ __ | |_(_) ___  _ __  ___
---- | | | | '_ \| __| |/ _ \| '_ \/ __|
---- | |_| | |_) | |_| | (_) | | | \__ \
----  \___/| .__/ \__|_|\___/|_| |_|___/
----       |_|
---- By EzBl4ck
------------------------------------------
-
 local options = {
   autoindent = true,
   backspace = "indent,eol,start",
   backup = false,
-  clipboard = "unnamedplus",
-  cmdheight = 1,
-  completeopt = { "menuone", "noselect" },
+  cmdheight = 0,
+  completeopt = { "menu", "menuone", "noselect" },
   conceallevel = 0,
   expandtab = true,
   fileencoding = "utf-8",
@@ -43,12 +32,20 @@ local options = {
   writebackup = false,
 }
 
+if not vim.env.SSH_TTY then
+  vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
+end
+
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+
 for option, value in pairs(options) do
   vim.opt[option] = value
 end
 
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
+vim.g.markdown_recommended_style = 0
 
-vim.opt.shortmess:append("c")
 vim.cmd([[set iskeyword+=-]])

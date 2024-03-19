@@ -1,20 +1,14 @@
--------------------------------------------
----  ____  _             _
---- |  _ \| |_   _  __ _(_)_ __  ___
---- | |_) | | | | |/ _` | | "_ \/ __|
---- |  __/| | |_| | (_| | | | | \__ \
---- |_|   |_|\__,_|\__, |_|_| |_|___/
----                |___/
---- By EzBl4ck
--------------------------------------------
-
 local plugins = {
-  "lambdalisue/suda.vim",
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
     config = function()
-      require("fede.plugins.config.nvimtree").setup()
+      require("fede.plugins.config.neotree").setup()
     end,
   },
 
@@ -38,16 +32,25 @@ local plugins = {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("lualine").setup()
+      require("lualine").setup({
+        extensions = { "neo-tree", "lazy" }
+      })
     end,
   },
 
   {
-    "windwp/nvim-autopairs",
-    dependencies = { "hrsh7th/nvim-cmp" },
-    event = "InsertEnter",
+    "rcarriga/nvim-notify"
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
     config = function()
-      require("fede.plugins.config.autopairs").setup()
+      require("fede.plugins.config.noice").setup()
     end,
   },
 
@@ -64,19 +67,13 @@ local plugins = {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-
-  {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
     config = function()
       require("dressing").setup()
     end,
   },
-
+  
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -87,60 +84,6 @@ local plugins = {
     },
     config = function()
       require("fede.plugins.config.telescope").setup()
-    end,
-  },
-
-  {
-    "stevearc/stickybuf.nvim",
-    dependencies = {
-      "akinsho/toggleterm.nvim",
-      "nvim-tree/nvim-tree.lua",
-    },
-    config = function()
-      require("stickybuf").setup()
-    end
-  },
-
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-      require("fede.plugins.config.toggleterm").setup()
-    end,
-  },
-
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    priority = 999,
-    config = function()
-      require("fede.plugins.config.which-key").setup()
-    end,
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-
-      "nvimtools/none-ls.nvim",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "jay-babu/mason-null-ls.nvim",
-
-      "stevearc/conform.nvim",
-
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "L3MON4D3/LuaSnip",
-
-      "simrat39/rust-tools.nvim",
-      "saecki/crates.nvim",
-    },
-    config = function()
-      require("fede.plugins.config.lsp").setup()
     end,
   },
 

@@ -1,17 +1,7 @@
-----------------------------------------------------
----  _____              ____  _ _   _
---- |_   _| __ ___  ___/ ___|(_) |_| |_ ___ _ __
----   | || '__/ _ \/ _ \___ \| | __| __/ _ \ '__|
----   | || | |  __/  __/___) | | |_| ||  __/ |
----   |_||_|  \___|\___|____/|_|\__|\__\___|_|
----
---- By EzBl4ck
-----------------------------------------------------
-
 local M = {}
 
 function M.setup()
-  local opts = {
+  require("nvim-treesitter.configs").setup({
     highlight = {
       enable = true,
     },
@@ -27,7 +17,6 @@ function M.setup()
       "vim",
       "gitignore",
       "c",
-      "c_sharp",
       "cpp",
       "cmake",
       "make",
@@ -40,8 +29,10 @@ function M.setup()
       "javascript",
       "typescript",
       "css",
-      "java",
-      "python",
+      "regex",
+      "bash",
+      "markdown",
+      "markdown_inline",
     },
 
     incremental_selection = {
@@ -58,9 +49,8 @@ function M.setup()
       enable = true,
       enable_autocmd = false,
     },
-  }
 
-  require("nvim-treesitter.configs").setup(opts)
+  })
 end
 
 return M

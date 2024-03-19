@@ -1,13 +1,3 @@
--------------------------------
----  _                    
---- | |    __ _ _____   _ 
---- | |   / _` |_  / | | |
---- | |__| (_| |/ /| |_| |
---- |_____\__,_/___|\__, |
----                 |___/ 
---- By EzBl4ck
--------------------------------
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -23,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { import = "fede.plugins" },
-  { import = "fede.plugins.colorschemes" },
+  { import = "fede.plugins.colors" },
 },{})
 
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme tokyonight-night]]
