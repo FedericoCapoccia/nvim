@@ -49,6 +49,10 @@ function M.setup()
     capabilities = capabilities,
   }
   lspconfig.pyright.setup({})
+  lspconfig.omnisharp.setup {
+    capabilities = capabilities,
+  }
+
 
   -- LSP Mason
   require("mason").setup({})
@@ -97,6 +101,8 @@ function M.setup()
       rust = { "rustfmt" },
       cpp = { "clang_format" },
       c = { "clang_format" },
+      csharp = { "csharpier" },
+      cs = { "csharpier" },
       python = { "black" },
     },
   })
