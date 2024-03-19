@@ -73,7 +73,7 @@ local plugins = {
       require("dressing").setup()
     end,
   },
-  
+
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -87,6 +87,48 @@ local plugins = {
     end,
   },
 
+  {
+    "windwp/nvim-autopairs",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    event = "InsertEnter",
+    config = function()
+      require("fede.plugins.config.autopairs").setup()
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
+
+      "nvimtools/none-ls.nvim",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "jay-babu/mason-null-ls.nvim",
+
+      "stevearc/conform.nvim",
+
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "L3MON4D3/LuaSnip",
+
+      "simrat39/rust-tools.nvim",
+      "saecki/crates.nvim",
+    },
+    config = function()
+      require("fede.plugins.config.lsp").setup()
+    end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("fede.plugins.config.toggleterm").setup()
+    end,
+  },
 }
 
 return plugins
