@@ -33,6 +33,7 @@ function M.setup()
       "bash",
       "markdown",
       "markdown_inline",
+      "go",
     },
 
     incremental_selection = {
