@@ -48,6 +48,9 @@ function M.setup()
   lspconfig.cmake.setup {
     capabilities = capabilities,
   }
+  lspconfig.gopls.setup {
+    capabilities = capabilities,
+  }
 
   -- LSP Mason
   require("mason").setup({})
@@ -72,6 +75,7 @@ function M.setup()
     ensure_installed = {
       "prettierd",
       "clang-format",
+      "gofumpt",
     },
     automatic_installation = true,
     automatic_setup = true,
@@ -95,6 +99,7 @@ function M.setup()
       rust = { "rustfmt" },
       cpp = { "clang_format" },
       c = { "clang_format" },
+      go = { "gofumpt" },
     },
   })
   vim.api.nvim_create_autocmd("BufWritePre", {
