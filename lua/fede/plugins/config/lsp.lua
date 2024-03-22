@@ -60,6 +60,7 @@ function M.setup()
       "html",
       "lemminx",
       "cmake",
+      "gopls",
     },
     automatic_installation = true,
     handlers = {
