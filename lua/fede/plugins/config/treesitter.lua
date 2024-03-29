@@ -34,6 +34,7 @@ function M.setup()
       "markdown",
       "markdown_inline",
       "go",
+      "c_sharp",
     },
 
     incremental_selection = {

@@ -134,5 +134,18 @@ local plugins = {
       require("fede.plugins.config.toggleterm").setup()
     end,
   },
+
+  {
+    'jmederosalvarado/roslyn.nvim',
+    dependencies = {'hrsh7th/cmp-nvim-lsp'},
+    config = function()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require("roslyn").setup({
+          on_attach =  function (_,_)
+          end,
+          capabilities = capabilities
+      })
+    end
+  },
 }
 return plugins
