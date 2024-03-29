@@ -12,7 +12,7 @@ function M.setup()
 
   require("toggleterm").setup(opts)
   --vim.keymap.set("n", "<leader>hh", "<cmd>ToggleTerm direction=horizontal size=35<CR>", { noremap = true, silent = true, desc = "Open Horizontal Terminal" })
-  vim.keymap.set({"n", "t"}, "<C-t>", "<cmd>ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "Open Floating Terminal" })
+  vim.keymap.set({"n", "t"}, "<C-t>", "<cmd>ToggleTerm direction=horizontal size=15<CR>", { noremap = true, silent = true, desc = "Open Floating Terminal" })
 end
 
 return M
