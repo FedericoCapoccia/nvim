@@ -24,6 +24,7 @@ function M.setup()
       "rust",
       "toml",
       "json",
+      "jsonc",
       "xml",
       "html",
       "javascript",
