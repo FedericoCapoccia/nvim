@@ -19,6 +19,7 @@ return {
                 "typescript",
                 "json",
                 "jsonc",
+                "regex",
             },
 
             auto_install = true,
