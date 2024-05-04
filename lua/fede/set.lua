@@ -26,9 +26,9 @@ local options = {
     signcolumn = "yes",
 }
 
-if not vim.env.SSH_TTY then
-    vim.opt.clipboard = "unnamedplus"
-end
+--if not vim.env.SSH_TTY then
+--    vim.opt.clipboard = "unnamedplus"
+--end
 
 for option, value in pairs(options) do
     vim.opt[option] = value
