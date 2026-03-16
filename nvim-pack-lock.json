@@ -1,5 +1,13 @@
 {
   "plugins": {
+    "mason.nvim": {
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "1d13d2b0df9a0a02904c76d7ad6810f71d404406",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
     "rose-pine": {
       "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"

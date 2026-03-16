@@ -27,6 +27,9 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 
+-- Completion
+vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
+
 -- Behavior
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 400
