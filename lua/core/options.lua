@@ -11,7 +11,30 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
+vim.g.markdown_recommended_style = 0
+
+-- Search and Highlight
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+-- UI
+vim.opt.winborder = "rounded"
+vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "120"
 vim.opt.fillchars = { eob = " " }
+vim.opt.laststatus = 3
+vim.opt.showmode = false
+
+-- Behavior
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
 
 -- Providers
 vim.g.loaded_python3_provider = 0
