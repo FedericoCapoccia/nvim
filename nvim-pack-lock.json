@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "rose-pine": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://github.com/rose-pine/neovim"
+    }
+  }
+}
