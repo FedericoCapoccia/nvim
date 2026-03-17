@@ -1,29 +1,30 @@
-vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+vim.pack.add { "https://github.com/neovim/nvim-lspconfig" }
 
-vim.lsp.enable({
+vim.lsp.enable {
     "lua_ls",
-})
+    "gopls",
+}
 
-vim.diagnostic.config({ virtual_text = true, signs = true })
+vim.diagnostic.config { virtual_text = true, signs = true }
 
 vim.lsp.config("*", {
     on_attach = function(client, bufnr)
         local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
         end
 
-        map('<leader>c', vim.lsp.buf.code_action, 'Code action')
-        map('<F2>', vim.lsp.buf.rename, 'Rename')
-        map('<leader>sd', vim.lsp.buf.hover, 'Hover documentation')
+        map("<leader>c", vim.lsp.buf.code_action, "Code action")
+        map("<F2>", vim.lsp.buf.rename, "Rename")
+        map("<leader>sd", vim.lsp.buf.hover, "Hover documentation")
 
-        map('gd', vim.lsp.buf.definition, 'Go to definition')
-        map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-        map('gi', vim.lsp.buf.implementation, 'Go to implementation')
+        map("gd", vim.lsp.buf.definition, "Go to definition")
+        map("gD", vim.lsp.buf.declaration, "Go to declaration")
+        map("gi", vim.lsp.buf.implementation, "Go to implementation")
 
-        if client:supports_method("textDocument/inlayHint") then
+        if client:supports_method "textDocument/inlayHint" then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
     end,
 })
 
-require("plugins.lsp.lua_ls")
+require "plugins.lsp.lua_ls"

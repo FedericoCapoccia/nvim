@@ -1,14 +1,20 @@
 -- FileType CMDs
 
 local indent_group = vim.api.nvim_create_augroup("FileTypeIndentation", {
-    clear = true
+    clear = true,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
     group = indent_group,
     desc = "Set 2-space indent for web development files.",
-    pattern = { 
-        "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "css", "html" 
+    pattern = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "css",
+        "html",
     },
     callback = function()
         vim.opt_local.expandtab = true

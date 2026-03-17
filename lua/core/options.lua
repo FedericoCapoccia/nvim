@@ -38,7 +38,7 @@ vim.opt.splitbelow = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.iskeyword:append("-")
+vim.opt.iskeyword:append "-"
 
 -- Providers
 vim.g.loaded_python3_provider = 0

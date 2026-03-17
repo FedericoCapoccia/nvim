@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "conform": {
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
@@ -14,3 +18,4 @@
     }
   }
 }
+

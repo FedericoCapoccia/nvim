@@ -1,9 +1,9 @@
-vim.pack.add({{
-    src = 'https://github.com/rose-pine/neovim',
-    name = 'rose-pine',
-}})
+vim.pack.add { {
+    src = "https://github.com/rose-pine/neovim",
+    name = "rose-pine",
+} }
 
-require("rose-pine").setup({
+require("rose-pine").setup {
     enable = {
         legacy_highlights = false,
     },
@@ -17,6 +17,6 @@ require("rose-pine").setup({
     highlight_groups = {
         Comment = { italic = true },
     },
-})
+}
 
-vim.cmd("colorscheme rose-pine")
+vim.cmd "colorscheme rose-pine"

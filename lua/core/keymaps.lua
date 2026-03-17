@@ -19,6 +19,6 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and keep selection" })
 vim.keymap.set("n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true })
 vim.keymap.set("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 
--- Buffer management 
-vim.keymap.set('n', "<Tab>", "<cmd>bnext <cr>", { desc = "Move to next buffer" })
-vim.keymap.set('n', "<S-Tab>", "<cmd>bprevious <cr>", { desc = "Move to previous buffer" })
+-- Buffer management
+vim.keymap.set("n", "<Tab>", "<cmd>bnext <cr>", { desc = "Move to next buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious <cr>", { desc = "Move to previous buffer" })
