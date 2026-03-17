@@ -8,6 +8,7 @@ vim.lsp.enable {
 vim.diagnostic.config { virtual_text = true, signs = true }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local telescope_builtin = require "telescope.builtin"
 
 vim.lsp.config("*", {
     capabilities = capabilities,
@@ -23,6 +24,7 @@ vim.lsp.config("*", {
         map("gd", vim.lsp.buf.definition, "Go to definition")
         map("gD", vim.lsp.buf.declaration, "Go to declaration")
         map("gi", vim.lsp.buf.implementation, "Go to implementation")
+        map("gr", telescope_builtin.lsp_references, "Go to references")
 
         if client:supports_method "textDocument/inlayHint" then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })

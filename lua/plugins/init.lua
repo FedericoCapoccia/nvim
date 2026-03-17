@@ -1,9 +1,11 @@
 require "plugins.theme"
 require "plugins.lualine"
+require "plugins.gitsigns"
 require "plugins.oil"
 require "plugins.mason"
 require "plugins.conform"
 require "plugins.treesitter"
+require "plugins.telescope"
 
 require "plugins.completion"
 require "plugins.lsp"

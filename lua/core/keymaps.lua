@@ -1,13 +1,13 @@
 -- Keymaps
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Close file" })
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file", remap = true })
+vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Close file", remap = true })
 
 -- Window management
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window", remap = true })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window", remap = true })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window", remap = true })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window", remap = true })
 
 -- Visual mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and keep selection" })
@@ -33,4 +33,4 @@ vim.keymap.set("n", "<leader>x", function()
         vim.cmd "enew"
     end
     vim.cmd("silent! bdelete " .. bufnr)
-end, { desc = "Close buffer safely" })
+end, { desc = "Close buffer safely", remap = true })
