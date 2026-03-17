@@ -1,5 +1,6 @@
 require "plugins.theme"
 require "plugins.lualine"
+require "plugins.oil"
 require "plugins.mason"
 require "plugins.conform"
 require "plugins.treesitter"

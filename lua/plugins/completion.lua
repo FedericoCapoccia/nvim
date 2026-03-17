@@ -2,6 +2,7 @@ vim.pack.add {
     { src = "https://github.com/hrsh7th/nvim-cmp", name = "nvim-cmp" },
     { src = "https://github.com/hrsh7th/cmp-nvim-lsp", name = "cmp-nvim-lsp" },
     { src = "https://github.com/hrsh7th/cmp-path", name = "cmp-path" },
+    { src = "https://github.com/windwp/nvim-autopairs" },
 }
 
 local cmp = require "cmp"
@@ -84,3 +85,10 @@ cmp.setup {
         end,
     },
 }
+
+require("nvim-autopairs").setup {
+    check_ts = true,
+}
+
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
