@@ -39,6 +39,8 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.iskeyword:append "-"
+vim.opt.foldlevel = 999
+vim.opt.foldlevelstart = 999
 
 -- Providers
 vim.g.loaded_python3_provider = 0
