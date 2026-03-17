@@ -10,8 +10,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and keep selection" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and keep selection" })
 
