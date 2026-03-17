@@ -2,7 +2,33 @@ vim.pack.add { { src = "https://github.com/nvim-treesitter/nvim-treesitter", ver
 
 require("nvim-treesitter").setup {}
 
-require("nvim-treesitter").install { "lua", "go" }
+require("nvim-treesitter").install {
+    -- Lang
+    "lua",
+    "go",
+    "zig",
+    "c",
+    "cpp",
+    "rust",
+
+    -- Web
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "tsx",
+    "json",
+    "graphql",
+    "http",
+
+    -- Config / markup
+    "toml",
+    "yaml",
+    "dockerfile",
+    "bash",
+    "markdown",
+    "markdown_inline",
+}
 
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true }),
