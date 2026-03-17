@@ -7,7 +7,10 @@ vim.lsp.enable {
 
 vim.diagnostic.config { virtual_text = true, signs = true }
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 vim.lsp.config("*", {
+    capabilities = capabilities,
     on_attach = function(client, bufnr)
         local map = function(keys, func, desc)
             vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })

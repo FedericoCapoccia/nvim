@@ -20,7 +20,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
 -- UI
-vim.opt.winborder = "rounded"
+vim.o.winborder = "rounded"
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 vim.opt.fillchars = { eob = " " }
@@ -28,7 +28,7 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 
 -- Completion
-vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- Behavior
 vim.opt.updatetime = 250
