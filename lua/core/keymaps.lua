@@ -20,3 +20,17 @@ vim.keymap.set("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true }
 -- Buffer management
 vim.keymap.set("n", "<Tab>", "<cmd>bnext <cr>", { desc = "Move to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious <cr>", { desc = "Move to previous buffer" })
+
+vim.keymap.set("n", "<leader>x", function()
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    if vim.bo[bufnr].modified then
+        vim.notify("Buffer is modified! Save before closing.", vim.log.levels.ERROR)
+        return
+    end
+    vim.cmd "bprevious"
+    if bufnr == vim.api.nvim_get_current_buf() then
+        vim.cmd "enew"
+    end
+    vim.cmd("silent! bdelete " .. bufnr)
+end, { desc = "Close buffer safely" })
