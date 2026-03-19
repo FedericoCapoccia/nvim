@@ -21,6 +21,8 @@ vim.keymap.set("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true }
 vim.keymap.set("n", "<Tab>", "<cmd>bnext <cr>", { desc = "Move to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious <cr>", { desc = "Move to previous buffer" })
 
+vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
+
 vim.keymap.set("n", "<leader>x", function()
     local bufnr = vim.api.nvim_get_current_buf()
 
