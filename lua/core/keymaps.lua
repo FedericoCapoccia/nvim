@@ -22,17 +22,27 @@ vim.keymap.set("n", "<Tab>", "<cmd>bnext <cr>", { desc = "Move to next buffer" }
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious <cr>", { desc = "Move to previous buffer" })
 
 vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
+vim.keymap.set("n", "<F5>", "<cmd>vsplit | terminal<CR>", { desc = "Open terminal in vertical split" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 vim.keymap.set("n", "<leader>x", function()
     local bufnr = vim.api.nvim_get_current_buf()
+
+    if vim.bo[bufnr].buftype == "terminal" then
+        vim.cmd "close"
+        vim.cmd("silent! bdelete! " .. bufnr)
+        return
+    end
 
     if vim.bo[bufnr].modified then
         vim.notify("Buffer is modified! Save before closing.", vim.log.levels.ERROR)
         return
     end
+
     vim.cmd "bprevious"
     if bufnr == vim.api.nvim_get_current_buf() then
         vim.cmd "enew"
     end
+
     vim.cmd("silent! bdelete " .. bufnr)
 end, { desc = "Close buffer safely", remap = true })
