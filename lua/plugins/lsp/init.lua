@@ -3,7 +3,8 @@ vim.pack.add { "https://github.com/neovim/nvim-lspconfig" }
 vim.lsp.enable {
     "lua_ls",
     "gopls",
-    "ts_ls",
+    -- "ts_ls",
+    "tsgo",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
