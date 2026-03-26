@@ -4,7 +4,6 @@ require "plugins.gitsigns"
 require "plugins.oil"
 require "plugins.mason"
 require "plugins.conform"
-require "plugins.lint"
 require "plugins.treesitter"
 require "plugins.telescope"
 
