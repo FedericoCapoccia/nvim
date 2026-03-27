@@ -5,6 +5,7 @@ vim.lsp.enable {
     "gopls",
     -- "ts_ls",
     "tsgo",
+    "tailwindcss",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
