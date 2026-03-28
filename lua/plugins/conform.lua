@@ -2,14 +2,14 @@ vim.pack.add { { src = "https://github.com/stevearc/conform.nvim", name = "confo
 
 require("conform").setup {
     formatters_by_ft = {
-        javascript = { "prettierd", "biome", stop_after_first = true },
-        typescript = { "prettierd", "biome", stop_after_first = true },
-        javascriptreact = { "prettierd", "biome", stop_after_first = true },
-        typescriptreact = { "prettierd", "biome", stop_after_first = true },
-        json = { "prettierd" },
-        jsonc = { "prettierd" },
-        html = { "prettierd" },
-        css = { "prettierd" },
+        javascript = { "oxfmt", "biome", stop_after_first = true },
+        typescript = { "oxfmt", "biome", stop_after_first = true },
+        javascriptreact = { "oxfmt", "biome", stop_after_first = true },
+        typescriptreact = { "oxfmt", "biome", stop_after_first = true },
+        json = { "oxfmt" },
+        jsonc = { "oxfmt" },
+        html = { "oxfmt" },
+        css = { "oxfmt" },
         lua = { "stylua" },
     },
 
