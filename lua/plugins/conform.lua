@@ -2,14 +2,14 @@ vim.pack.add { { src = "https://github.com/stevearc/conform.nvim", name = "confo
 
 require("conform").setup {
     formatters_by_ft = {
-        javascript = { "oxfmt", "biome", stop_after_first = true },
-        typescript = { "oxfmt", "biome", stop_after_first = true },
-        javascriptreact = { "oxfmt", "biome", stop_after_first = true },
-        typescriptreact = { "oxfmt", "biome", stop_after_first = true },
-        json = { "oxfmt" },
-        jsonc = { "oxfmt" },
-        html = { "oxfmt" },
-        css = { "oxfmt" },
+        javascript = { "vp_fmt", "oxfmt", stop_after_first = true },
+        typescript = { "vp_fmt", "oxfmt", stop_after_first = true },
+        javascriptreact = { "vp_fmt", "oxfmt", stop_after_first = true },
+        typescriptreact = { "vp_fmt", "oxfmt", stop_after_first = true },
+        json = { "vp_fmt", "oxfmt", stop_after_first = true },
+        jsonc = { "vp_fmt", "oxfmt", stop_after_first = true },
+        html = { "vp_fmt", "oxfmt", stop_after_first = true },
+        css = { "vp_fmt", "oxfmt", stop_after_first = true },
         lua = { "stylua" },
     },
 
@@ -20,6 +20,16 @@ require("conform").setup {
 
     default_format_opts = {
         lsp_format = "fallback",
+    },
+
+    formatters = {
+        vp_fmt = {
+            command = "vp",
+            args = { "fmt", "$FILENAME", "--write" },
+            stdin = false,
+            require_cwd = true,
+            cwd = require("conform.util").root_file { "vite.config.ts", "package.json" },
+        },
     },
 }
 
