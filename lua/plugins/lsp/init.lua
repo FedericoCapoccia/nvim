@@ -3,8 +3,8 @@ vim.pack.add { "https://github.com/neovim/nvim-lspconfig" }
 vim.lsp.enable {
     "lua_ls",
     "gopls",
-    -- "ts_ls",
-    "tsgo",
+    "ts_ls",
+    -- "tsgo",
     "tailwindcss",
 }
 
@@ -21,6 +21,48 @@ vim.lsp.config("*", {
             },
         },
     },
+})
+
+-- NOTE: this is needed because of invald filetypes declared in
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/tailwindcss.lua
+vim.lsp.config("tailwindcss", {
+    filetypes = {
+        -- html
+        "astro",
+        "clojure",
+        "htmldjango",
+        "elixir",
+        "eruby", -- vim ft
+        "haml",
+        "handlebars",
+        "html",
+        "htmlangular",
+        "heex",
+        "liquid",
+        "markdown",
+        "php",
+        "twig",
+        -- css
+        "css",
+        "less",
+        "sass",
+        "scss",
+        "stylus",
+        -- js
+        "javascript",
+        "javascriptreact",
+        "rescript",
+        "typescript",
+        "typescriptreact",
+        -- mixed
+        "vue",
+        "svelte",
+    },
+})
+
+-- See above
+vim.lsp.config("gopls", {
+    filetypes = { "go", "gomod" },
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
