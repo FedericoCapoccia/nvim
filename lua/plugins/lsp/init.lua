@@ -6,6 +6,7 @@ vim.lsp.enable {
     "ts_ls",
     -- "tsgo",
     "tailwindcss",
+    "oxfmt",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
@@ -21,6 +22,10 @@ vim.lsp.config("*", {
             },
         },
     },
+})
+
+vim.lsp.config("oxfmt", {
+    workspace_required = false,
 })
 
 -- NOTE: this is needed because of invald filetypes declared in

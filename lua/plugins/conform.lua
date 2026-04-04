@@ -2,14 +2,6 @@ vim.pack.add { { src = "https://github.com/stevearc/conform.nvim", name = "confo
 
 require("conform").setup {
     formatters_by_ft = {
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        json = { "prettierd" },
-        jsonc = { "prettierd" },
-        html = { "prettierd" },
-        css = { "prettierd" },
         lua = { "stylua" },
     },
 
