@@ -7,6 +7,7 @@ vim.lsp.enable {
     -- "tsgo",
     "tailwindcss",
     "oxfmt",
+    "oxlint",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
