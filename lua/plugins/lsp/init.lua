@@ -142,5 +142,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
-
-require "plugins.lsp.lua_ls"
