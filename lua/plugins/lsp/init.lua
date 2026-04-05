@@ -71,6 +71,27 @@ vim.lsp.config("gopls", {
     filetypes = { "go", "gomod" },
 })
 
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                enable = true,
+                globals = { "vim" },
+            },
+            workspace = {
+                library = {
+                    vim.env.VIMRUNTIME,
+                    vim.fn.stdpath "config" .. "/lua",
+                },
+                checkThirdParty = false,
+            },
+        },
+    },
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
