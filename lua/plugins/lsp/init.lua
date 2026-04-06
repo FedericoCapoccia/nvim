@@ -64,6 +64,11 @@ vim.lsp.config("tailwindcss", {
         "vue",
         "svelte",
     },
+    settings = {
+        tailwindCSS = {
+            classFunctions = { "cn", "cva", "clsx" },
+        },
+    },
 })
 
 -- See above
