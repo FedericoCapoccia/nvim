@@ -9,6 +9,7 @@ vim.lsp.enable {
     "oxfmt",
     "oxlint",
     "rust_analyzer",
+    "zls",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
