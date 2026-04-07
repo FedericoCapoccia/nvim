@@ -116,6 +116,11 @@ vim.lsp.config("rust_analyzer", {
             check = {
                 command = "clippy",
             },
+            completion = {
+                callable = {
+                    snippets = "none", -- disables function argument placeholders
+                },
+            },
         },
     },
 })
