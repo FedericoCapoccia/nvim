@@ -8,6 +8,7 @@ vim.lsp.enable {
     "tailwindcss",
     "oxfmt",
     "oxlint",
+    "rust_analyzer",
 }
 
 vim.diagnostic.config { virtual_text = true, signs = true }
@@ -92,6 +93,17 @@ vim.lsp.config("lua_ls", {
                     vim.fn.stdpath "config" .. "/lua",
                 },
                 checkThirdParty = false,
+            },
+        },
+    },
+})
+
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = true,
+            check = {
+                command = "clippy",
             },
         },
     },
