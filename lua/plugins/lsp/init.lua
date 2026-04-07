@@ -31,6 +31,16 @@ vim.lsp.config("oxfmt", {
     workspace_required = false,
 })
 
+vim.lsp.config("zls", {
+    settings = {
+        zls = {
+            enable_argument_placeholders = false,
+            enable_build_on_save = true,
+            build_on_save_step = "check",
+        },
+    },
+})
+
 -- NOTE: this is needed because of invald filetypes declared in
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/tailwindcss.lua
 vim.lsp.config("tailwindcss", {
