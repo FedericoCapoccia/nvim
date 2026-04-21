@@ -1,8 +1,8 @@
 vim.pack.add {
-    { src = "https://github.com/hrsh7th/nvim-cmp", name = "nvim-cmp" },
-    { src = "https://github.com/hrsh7th/cmp-nvim-lsp", name = "cmp-nvim-lsp" },
-    { src = "https://github.com/hrsh7th/cmp-path", name = "cmp-path" },
-    { src = "https://github.com/windwp/nvim-autopairs" },
+    "https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "https://github.com/hrsh7th/cmp-path",
+    "https://github.com/windwp/nvim-autopairs",
 }
 
 local cmp = require "cmp"
@@ -16,8 +16,6 @@ cmp.setup {
         ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<Tab>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-        ["<S-Tab>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ["<CR>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,

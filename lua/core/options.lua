@@ -10,6 +10,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
+vim.opt.smartindent = true
 
 vim.g.markdown_recommended_style = 0
 
@@ -41,6 +42,8 @@ vim.opt.undofile = true
 vim.opt.iskeyword:append "-"
 vim.opt.foldlevel = 999
 vim.opt.foldlevelstart = 999
+vim.opt.wrap = false
+vim.opt.scrolloff = 8
 
 -- Providers
 vim.g.loaded_python3_provider = 0

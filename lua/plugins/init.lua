@@ -1,10 +1,15 @@
-require "plugins.theme"
-require "plugins.lualine"
-require "plugins.gitsigns"
-require "plugins.oil"
-require "plugins.conform"
-require "plugins.treesitter"
-require "plugins.telescope"
+local plugins = {
+    "theme",
+    "lualine",
+    "oil",
+    "conform",
+    "treesitter",
+    "telescope",
+    "completion",
+    "whichkey",
+    "lsp",
+}
 
-require "plugins.completion"
-require "plugins.lsp"
+for _, plugin in ipairs(plugins) do
+    require("plugins." .. plugin)
+end
