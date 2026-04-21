@@ -4,7 +4,7 @@ local plugins = {
     "oil",
     "conform",
     "treesitter",
-    "telescope",
+    "fzf",
     "completion",
     "whichkey",
     "lsp",

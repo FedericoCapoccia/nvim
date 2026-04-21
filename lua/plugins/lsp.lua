@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         if client:supports_method "textDocument/definition" then
             vim.keymap.set("n", "gd", function()
-                require("telescope.builtin").builtin.lsp_definitions()
+                require("fzf-lua").lsp_definitions()
             end, opts "Go to definition")
         end
 
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         if client:supports_method "textDocument/implementation" then
             vim.keymap.set("n", "gi", function()
-                require("telescope.builtin").lsp_implementations()
+                require("fzf-lua").lsp_implementations()
             end, opts "Go to implementation")
         end
 
