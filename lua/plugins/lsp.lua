@@ -4,7 +4,7 @@ vim.lsp.enable {
     "lua_ls",
     "gopls",
     "ts_ls",
-    "tailwindcss",
+    -- "tailwindcss",
     "oxfmt",
     "oxlint",
     "rust_analyzer",
